@@ -6,7 +6,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <Suspense fallback={<div></div>}>
+  <Suspense fallback={<div>加载中。。。</div>}>
     <App />
   </Suspense>
 );

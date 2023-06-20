@@ -1,6 +1,7 @@
 import React from 'react';
 import {HashRouter, Navigate , Route, Routes, useLocation} from 'react-router-dom'
 import ReactDOM from 'react-dom';
+import ContextComp from './store/context';
 import {AllRouters as routes} from "./router/index";
 import DefaultLayout from './Layout/default';
 import api from "@/Api";
@@ -26,7 +27,9 @@ function App() {
             return (
               <Route key={e.key} path={e.path} element={
                 <DefaultLayout>
-                  <e.component />
+                  <ContextComp>
+                    <e.component />
+                  </ContextComp>
                 </DefaultLayout>
               }>
               </Route>
