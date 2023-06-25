@@ -1,6 +1,6 @@
 import * as Action from './actionTypes'
 
-export const getData = async (dispatch: any) => {
+export const getData = async () => {
   const {data} = await window.$api.getDatas()
   return {
     type: Action.GET_DATA,

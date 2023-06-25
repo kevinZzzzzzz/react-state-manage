@@ -42,7 +42,7 @@ class HomePage extends PureComponent<any> {
     })
   }
   handleChange(e: any) {
-    let value = e.target.value
+    const value: string = e.target.value
     this.setState({
       todoVal: value
     })
@@ -114,7 +114,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     async handleGetData() {
-      let action: {} = await getData()
+      const action: any = await getData()
       dispatch(action)
     },
     handleAddCount() {
@@ -128,11 +128,11 @@ const mapDispatchToProps = (dispatch: any) => {
       })
     },
     async handleAddTodo(val: string) {
-      let action: {} = await addTodo(val)
+      const action: any = await addTodo(val)
       dispatch(action)
     },
     async handleDelTodo(idx: number) {
-      let action: {} = await delTodo(idx)
+      const action: any = await delTodo(idx)
       dispatch(action)
     }
   }
