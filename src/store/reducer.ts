@@ -1,32 +1,39 @@
-import * as actionType from './action'
+import * as Action from './actionTypes'
+const initialState = {}
 
-export const initialState = {
-  todoList: [],
-  count: 0
-}
-
-const reducerFun = (state: any = initialState, action: any) => {
-  const { type, payload } = action
+const reducerFunc = (state: any = initialState, action: any) => {
+  const {type, payload} = action
   switch (type) {
-    case actionType.ADD_COUNT:
+    case Action.GET_DATA:
+      state = payload
+      return state;
+    case Action.ADD_COUNT:
       let count1 = state.count
       ++count1
       return {
         ...state,
-        count:count1
+        count: count1
       }
-    case actionType.DEL_COUNT:
+    case Action.DEL_COUNT:
       let count2 = state.count
-      --count2
+      if (count2 > 0) --count2
       return {
         ...state,
-        count:count2
+        count: count2
+      }
+    case Action.ADD_TODO:
+      return {
+        ...state,
+        todoList: payload
+      }
+    case Action.DEL_TODO:
+      return {
+        ...state,
+        todoList: payload
       }
     default:
-      return {
-        ...state
-      }
+      return state;
   }
-}
 
-export default reducerFun
+}
+export default reducerFunc

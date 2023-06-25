@@ -15,7 +15,7 @@ declare global {
 */
 window.$api = {...api}
 
-function App() {
+function App(props: any) {
   return (
     <HashRouter>
       <Routes>
@@ -26,7 +26,7 @@ function App() {
             return (
               <Route key={e.key} path={e.path} element={
                 <DefaultLayout>
-                  <e.component />
+                  <e.component store={props.store}/>
                 </DefaultLayout>
               }>
               </Route>

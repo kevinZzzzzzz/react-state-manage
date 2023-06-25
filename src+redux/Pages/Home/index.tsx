@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux'
 import { Input, Space, List, Button, Divider, Typography } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import styles from './index.module.scss'
-import { addTodo, delTodo, getData } from '@/store/actionCreactor';
 
 class HomePage extends PureComponent<any> {
   declare state: {
@@ -14,31 +12,23 @@ class HomePage extends PureComponent<any> {
   store: any;
   constructor(props: any) {
     super(props)
+    this.store = props.store
     this.state = {
-      count: 0,
+      count: props.store.getState().HomePage.count,
       todoVal: '',
-      todoList: []
+      todoList: props.store.getState().HomePage.todoList
     }
   }
-  async componentDidMount(): Promise<void> {
-    await this.props.handleGetData()
+  addCount() {
+    this.store.dispatch({type: 'ADD_COUNT'})
     this.setState({
-      ...this.state,
-      count: this.props.count,
-      todoList: this.props.todoList,
+      count: this.store.getState().HomePage.count
     })
   }
-
-  async addCount() {
-    await this.props.handleAddCount()
+  delCount() {
+    this.store.dispatch({type: 'DEL_COUNT'})
     this.setState({
-      count: this.props.count
-    })
-  }
-  async delCount() {
-    await this.props.handleDelCount()
-    this.setState({
-      count: this.props.count
+      count: this.store.getState().HomePage.count
     })
   }
   handleChange(e: any) {
@@ -47,18 +37,19 @@ class HomePage extends PureComponent<any> {
       todoVal: value
     })
   }
-  async addTodo() {
-    if (!this.state.todoVal) return false
-    await this.props.handleAddTodo(this.state.todoVal)
-    this.setState({
-      todoList: [...this.props.todoList],
-      todoVal: ''
-    })
+  addTodo() {
+    this.store.dispatch({type: 'ADD_TODO', payload: this.state.todoVal})
+    setTimeout(() => {
+      this.setState({
+        todoList: [...this.store.getState().HomePage.todoList],
+        todoVal: ''
+      })
+    }, 2000)
   }
-  async delTodo(idx: number) {
-    await this.props.handleDelTodo(idx)
+  delTodo(idx: number) {
+    this.store.dispatch({type: 'DEL_TODO', payload: idx})
     this.setState({
-      todoList: [...this.props.todoList],
+      todoList: [...this.store.getState().HomePage.todoList],
     })
   }
   render() {
@@ -80,7 +71,7 @@ class HomePage extends PureComponent<any> {
           <Input style={{width: '200px'}} placeholder="请输入内容" value={todoVal} showCount onChange={(e) => {
             this.handleChange(e)
           }} />
-          <Button type="primary" disabled={todoVal === ''} onClick={() => {
+          <Button type="primary" onClick={() => {
             this.addTodo()
           }}>添加</Button>
           </Space.Compact>
@@ -104,37 +95,5 @@ class HomePage extends PureComponent<any> {
     )
   }
 }
-const mapStateToProps = (state: any) => {
-  return {
-    count: state.HomePage.count,
-    todoList: state.HomePage.todoList
-  }
-}
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    async handleGetData() {
-      let action: {} = await getData()
-      dispatch(action)
-    },
-    handleAddCount() {
-      dispatch({
-        type: "ADD_COUNT"
-      })
-    },
-    handleDelCount() {
-      dispatch({
-        type: "DEL_COUNT"
-      })
-    },
-    async handleAddTodo(val: string) {
-      let action: {} = await addTodo(val)
-      dispatch(action)
-    },
-    async handleDelTodo(idx: number) {
-      let action: {} = await delTodo(idx)
-      dispatch(action)
-    }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+export default HomePage
