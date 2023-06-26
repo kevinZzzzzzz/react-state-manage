@@ -98,31 +98,26 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
      handleGetData: async () => {
-      dispatch({
-        type: 'GET_DATA_START'
-      })
+      const action: any = await getData()
+      dispatch(action)
     },
     handleAddCount() {
       dispatch({
-        type: "ADD_COUNT_START"
+        type: "ADD_COUNT"
       })
     },
     handleDelCount() {
       dispatch({
-        type: "DEL_COUNT_START"
+        type: "DEL_COUNT"
       })
     },
     async handleAddTodo(val: string) {
-      dispatch({
-        type: 'ADD_TODO_START',
-        payload: val
-      })
+      const action: any = await addTodo(val)
+      dispatch(action)
     },
     async handleDelTodo(idx: number) {
-      dispatch({
-        type: 'DEL_TODO_START',
-        payload: idx
-      })
+      const action: any = await delTodo(idx)
+      dispatch(action)
     }
   }
 }
