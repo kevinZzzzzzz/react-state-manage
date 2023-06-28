@@ -10,7 +10,13 @@ export default {
   /*
     for example：
   */
-  async xxx (data: any = {}): Promise<AxiosResponse<any, any>> {
-    return await http.post(setProxy('/xxx'), { data }, true, true)
+  async getDatas (data: any = {}): Promise<AxiosResponse<any, any>> {
+    return await http.get(setProxy('/getData'), true, true)
+  },
+  async addTodo (data: any = {}): Promise<AxiosResponse<any, any>> {
+    return await http.post(setProxy('/addTodo'),{data}, true, true)
+  },
+  async delTodo (data: any = {}): Promise<AxiosResponse<any, any>> {
+    return await http.post(setProxy('/delTodo'),{data}, true, true)
   }
 }
