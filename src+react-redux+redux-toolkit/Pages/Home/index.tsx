@@ -96,7 +96,7 @@ const mapStateToProps = (state: any) => ({
 // 派发异步的action
 const mapDispatchToProps = (dispatch: any) => ({
   getData() {
-    dispatch(getDataAction())
+    dispatch(getDataAction()) 
   },
   handleAddCount() {
     dispatch(addCount())
