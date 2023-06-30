@@ -2,3 +2,9 @@
 /dist
 /node_modules
 /public
+/src copy
+/src+hook+redux
+/src+react-redux+redux-thunk
+/src+react-redux+redux-toolkit
+/src+redux
+/src+redux+saga

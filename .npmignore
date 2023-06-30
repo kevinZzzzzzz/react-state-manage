@@ -7,6 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+src copy
+src+hook+redux
+src+react-redux+redux-thunk
+src+react-redux+redux-toolkit
+src+redux
+src+redux+saga
+
 node_modules
 dist
 dist-ssr

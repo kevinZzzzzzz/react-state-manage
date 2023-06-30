@@ -1,4 +1,3 @@
-import { delTodo } from 'src+react-redux+redux-thunk/store/actionCreactor'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
