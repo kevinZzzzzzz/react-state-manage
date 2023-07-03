@@ -4,7 +4,7 @@ const http = require('http')
 const server = http.createServer(app)
 const cors = require('cors')
 
-const port = 8882
+const port = 8080
 const data = {
   todoList: [
     'sunDay'
@@ -14,13 +14,13 @@ const data = {
 app.use(cors())
 app.use(express.json()) // post 请求获取请求体的参数
 
-app.get('/getData', (req: any, res: any) => {
+app.get('/getData', (req, res) => {
   res.json({
     code: 0,
     data: data
   })
 })
-app.post('/addTodo', (req: any, res: any) => {
+app.post('/addTodo', (req, res) => {
   const { addItem } = req.body
   let newData = {...data}
   newData.todoList.push(addItem)
@@ -29,7 +29,7 @@ app.post('/addTodo', (req: any, res: any) => {
     data: newData
   })
 })
-app.post('/delTodo', (req: any, res: any) => {
+app.post('/delTodo', (req, res) => {
   const {index} = req.body
   let newData = {...data}
   newData.todoList.splice(index, 1)

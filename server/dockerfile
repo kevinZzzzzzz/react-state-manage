@@ -1,5 +1,5 @@
-# 使用更轻量的 node18
-FROM node:18-alpine
+# 使用更轻量的 node14.18.2
+FROM node:14
 # 创建工作目录 /app
 WORKDIR /app
 
