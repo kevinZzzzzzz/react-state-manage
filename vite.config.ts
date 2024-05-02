@@ -15,6 +15,7 @@ export default ({mode, command}) => {
     define: {
       'process.env': process.env
     },
+    base: './',
     server: {
       port: 8881,
       host: true,
