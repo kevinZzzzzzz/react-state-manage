@@ -1,6 +1,0 @@
-#!/bin/sh
-
-"$(dirname "$0")/_/husky.sh"
-
-echo "========= 执行commit-msg操作 ======="
-npx commitlint --edit "$1"
