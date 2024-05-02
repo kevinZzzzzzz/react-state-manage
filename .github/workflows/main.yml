@@ -48,6 +48,6 @@ jobs:
 
       # 在这里启动 Node.js 服务，并指定端口为 8080
       - name: Start Node.js server
-        run: cd server && npm start
+        run: cd server && npm run serve
         env:
           PORT: 8080
