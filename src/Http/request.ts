@@ -25,6 +25,7 @@ class HttpRequest {
     instance.interceptors.request.use(
       (config: any) => {
         config.baseURL = location.origin
+        config.timeout = 5000
         return config
       },
 

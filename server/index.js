@@ -15,6 +15,7 @@ app.use(cors())
 app.use(express.json()) // post 请求获取请求体的参数
 
 app.get('/getData', (req, res) => {
+  console.log(req)
   res.json({
     code: 0,
     data: data
