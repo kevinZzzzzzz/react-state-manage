@@ -39,7 +39,7 @@ jobs:
 
       # 在这里添加部署后端项目的步骤
       - name: Setup Node.js for backend
-        uses: actions/setup-node@v2s
+        uses: actions/setup-node@v2
         with:
           node-version: "16.x"
 
