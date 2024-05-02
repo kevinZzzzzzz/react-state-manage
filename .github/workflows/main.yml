@@ -30,24 +30,22 @@ jobs:
           publish_dir: ./dist # 部署打包后的 dist 目录
           github_token: ${{ secrets.REACTSTATEMANAGE }} # secret 名
           commit_message: 自动部署 # 部署时的 git 提交信息，自由填写
-  deploy_backend:
-    needs: deploy_frontend
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # deploy_backend:
+  #   needs: deploy_frontend
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      # 在这里添加部署后端项目的步骤
-      - name: Setup Node.js for backend
-        uses: actions/setup-node@v2
-        with:
-          node-version: "16.x"
+  #     # 在这里添加部署后端项目的步骤
+  #     - name: Setup Node.js for backend
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: "16.x"
 
-      - name: Install backend dependencies
-        run: cd server && npm install
+  #     - name: Install backend dependencies
+  #       run: cd server && npm install
 
-      # 在这里启动 Node.js 服务，并指定端口为 8080
-      - name: Start Node.js server
-        run: cd server && npm run serve
-        env:
-          PORT: 8080
+  #     # 在这里启动 Node.js 服务，并指定端口为 8080
+  #     - name: Start Node.js server
+  #       run: cd server && npm run serve
