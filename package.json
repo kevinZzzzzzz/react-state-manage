@@ -30,12 +30,6 @@
       "eslint src"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged",
-      "commit-msg": "npx --no-install commitlint --edit '$1'"
-    }
-  },
   "devDependencies": {
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
